@@ -1,29 +1,28 @@
-# 01 - Scope, Roles, and Severity
+# 01 - Scope and Roles
 
 ## Purpose
-This playbook describes how to triage and respond to reported phishing emails. It follows the NIST incident response lifecycle: preparation, detection and analysis, containment, eradication, recovery, and post-incident activity.
+How to triage and respond to reported phishing emails.
 
 ## Scope
-This playbook covers user-reported and automatically detected phishing, including:
-- **Credential harvesting links**: emails that send users to fake login pages.
-- **Malicious attachments**: emails with files that run malware or exploit software.
-- **Business email compromise (BEC)**: emails that impersonate executives, vendors, or coworkers to trick someone into paying money or sharing information.
+This playbook covers user-reported and detected phishing, including:
+- Credential harvesting links
+- Malicious attachments
+- BEC (business email compromise): an attacker impersonates an executive, vendor, or coworker by email to trick someone into sending money or sensitive information
+
+**Out of scope:** spam or marketing email with no malicious intent.
 
 ## Roles
 | Role | Responsibility |
 |------|----------------|
-| Reporting user | Reports the suspicious email and does not click, reply, or forward it. |
-| Tier 1 analyst | Triages the report, checks headers, links, and attachments, and assigns an initial verdict and severity. |
-| Tier 2 analyst | Performs deep analysis and carries out containment, eradication, and recovery. |
-| IR lead | Takes escalations, makes decisions on high-impact incidents, and approves communications. |
+| Reporting user | Reports the suspicious email and says whether they clicked, replied, or opened anything |
+| Tier 1 analyst | Triage: confirms whether the email is phishing and assigns an initial severity |
+| Tier 2 analyst | Deep analysis and containment (header and URL/attachment analysis, blocking, resetting credentials) |
+| IR lead | Takes escalations and coordinates the response for High and Critical incidents |
 
 ## Severity Levels
-| Severity | Criteria |
-|----------|----------|
-| **Low** | Nobody interacted with the email. |
-| **Medium** | The user clicked a link, but no credentials were entered. |
-| **High** | Credentials were entered, or an attachment was opened. |
-| **Critical** | Confirmed compromise, or the email reached multiple users or executives. |
-
-## Escalation
-Escalate to the IR lead for any incident rated High or Critical, any email that targeted executives, or any email that reached multiple recipients.
+| Level | Criteria | Who handles it |
+|-------|----------|----------------|
+| Low | Nobody interacted with the email | Tier 1 closes it |
+| Medium | The user clicked, but no credentials were entered | Tier 1 triages, Tier 2 contains |
+| High | Credentials were entered or an attachment was opened | Tier 2 leads, IR lead notified |
+| Critical | Confirmed compromise, or the email hit multiple users or executives | IR lead takes over, Tier 2 supports |
